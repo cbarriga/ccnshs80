@@ -1,0 +1,8 @@
+- User signup
+    - this will be by invite only
+- User will be created by Admin, using a username and email address
+    - an email will be sent to the invited user once created to verify their emai.
+- User login
+- List all users
+- Search for a user
+- Logged in user can edit their own info in the Profile section

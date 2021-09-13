@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock title%}
+{% block content %}
+    <div class="media">
+        <img class="mr-3" src="/media/ccnshs_logo.jpg" alt="CCNSHS Logo">
+        <div class="media-body">
+            <div class="jumbotron mt-0">
+                <h1 class="display-4">Welcome</h1>
+                <p class="lead">
+                    This is the <b>Cebu City National Science High School (CCNSHS), Batch 80</b> website.
+                    This website will serve as the repository of the contact information of all our batchmates
+                    for easy reference. So, please make sure that your <b>Profile</b> information is up to date.
+                    <br /><br />
+                    The site currently has <b>{{ member_count }}</b>.
+                </p>
+                <hr class="my-4">
+                <p class="lead">
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-primary btn-lg" href="{% url 'logout' %}" role="button">Logout</a>
+                    {% else %}
+                        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Sign in</a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+    
+
+
+{% endblock content %}
