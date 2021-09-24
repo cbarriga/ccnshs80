@@ -19,7 +19,6 @@ load_dotenv()  # loads the configs from .env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Same level as manage.py
 BASE_DIR = Path(__file__).resolve().parent.parent
-print("BASE_DIR = ", BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -35,6 +34,16 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+"""
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+"""
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,13 +51,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # 3rd Party
+    'invitations',
     'social_django',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
 
     # local
     'profiles',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,6 +90,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -145,3 +163,11 @@ LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# https://github.com/bee-keeper/django-invitations
+ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
+# INVITATIONS_EMAIL_SUBJECT_PREFIX = '[ccnshs80.com] '
+INVITATIONS_INVITATION_EXPIRY = 7   # Let's give them 7 days
+INVITATIONS_INVITATION_ONLY = True
+INVITATIONS_ACCEPT_INVITE_AFTER_SIGNUP = True
+INVITATIONS_SIGNUP_REDIRECT = 'profiles-register'

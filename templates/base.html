@@ -36,6 +36,9 @@
                       <a href="{% url 'profiles-profile' %}" class="nav-item nav-link">Profile</a>
                     </li>
                     <li class="nav-item">
+                      <a href="{% url 'invitations:send-invite' %}" class="nav-item nav-link">Invite</a>
+                    </li>
+                    <li class="nav-item">
                       <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
                     </li>
                       {% else %}
@@ -65,6 +68,16 @@
       {% endif %}
 
           {% block content %}{% endblock %}
+
+          <footer class="bg-light text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: #f0f5f5;">
+              © 2021 Celso Barriga
+              <a class="text-dark d-none" href="https://celsobarriga.com/">CelsoBarriga.com</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+      
         </div>
       </div>
     </div>
@@ -78,6 +91,5 @@
 
     <!-- A plugin for password show/hide  -->
     <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
-
   </body>
 </html>

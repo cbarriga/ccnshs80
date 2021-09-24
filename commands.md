@@ -17,3 +17,6 @@
     git add --all
     git commit -m "Initial commit"
     (When pushing to github, do not add .gitignore and readme)
+
+Module for django invitations
+https://github.com/bee-keeper/django-invitations

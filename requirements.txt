@@ -1,4 +1,6 @@
 django>=3.2,<3.3
+django-allauth
+django-invitations
 pillow
 python-dotenv
 social-auth-app-django

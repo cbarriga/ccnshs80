@@ -1,9 +1,10 @@
 from django.contrib.auth import views as auth_views
-from django.urls import path
+from django.urls import path, include
 from profiles.forms import LoginForm
 from profiles.views import ChangePasswordView, CustomLoginView, ResetPasswordView
 
 from .views import home_view, RegisterView, profile
+import invitations
 
 urlpatterns = [
     path('', home_view, name='profiles-home'),
@@ -20,4 +21,6 @@ urlpatterns = [
          name='password_reset_complete'),
     path('profile/', profile, name='profiles-profile'),
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
+    path('invitations/', include('invitations.urls', namespace='invitations')),
+    path('accounts/', include('allauth.urls')),
 ]
